@@ -9,6 +9,10 @@ import { ProviderService } from './provider.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SelectValueComponent } from './select-value/select-value.component';
 import { MissionsViewerComponent } from './missions-viewer/missions-viewer.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { MissionsViewerComponent } from './missions-viewer/missions-viewer.compo
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [ProviderService],
   bootstrap: [AppComponent]
