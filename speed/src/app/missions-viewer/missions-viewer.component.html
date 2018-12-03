@@ -1,0 +1,4 @@
+<p>Resultados: {{filteredMissions?.length}}</p>
+<ul *ngIf="criteria && value">
+  <li *ngFor="let mission of filteredMissions">{{mission?.name}}</li>
+</ul>

@@ -1,8 +1,17 @@
-<h1>Angular Speed: aplicaciones de alto rendimiento</h1>
+<h1>Space + Redux</h1>
 
-<router-outlet></router-outlet>
-
-<footer>
-  <a href="https://trainingit.es/">Training IT</a>
-  <small>A course By <a href="https://twitter.com/albertobasalo">Alberto Basalo</a></small>
-</footer>
+<section>
+  <div class="sel-criteria selector-area">
+    <app-select-criteria (changedCriteria)="setCriteria($event)"></app-select-criteria>
+    <div>Criterio seleccionado: {{criteria}}</div>
+  </div>
+  <hr/>
+  <div class="sel-value selector-area">
+    <app-select-value [options]="valuesHolder" (valueChosen)="setValue($event)"></app-select-value>
+    <div>Valor seleccionado: {{value?.name}}</div>
+  </div>
+  <hr/>
+  <div class="filtered-missions results-area">
+    <app-missions-viewer [sources]="missions" [criteria]="criteria" [value]="value"></app-missions-viewer>
+  </div>
+</section>
