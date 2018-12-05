@@ -13,6 +13,11 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AgencyEffects } from './reducers/agency.effects';
+import { MissionEffects } from './reducers/mission.effects';
+import { StatusEffects } from './reducers/status.effects';
+import { TypeEffects } from './reducers/type.effects';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { environment } from '../environments/environment';
     FormsModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AgencyEffects, MissionEffects, StatusEffects, TypeEffects])
   ],
   providers: [ProviderService],
   bootstrap: [AppComponent]
