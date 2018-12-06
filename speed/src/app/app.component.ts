@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProviderService } from './provider.service';
-import { Observable } from 'rxjs';
-import { StoreService, SLICES } from './store.service';
+import { Store } from '@ngrx/store';
+import { State } from './reducers';
+import { LoadMissions } from './reducers/mission.actions';
+import { LoadAgencys } from './reducers/agency.actions';
+import { LoadStatuss } from './reducers/status.actions';
+import { LoadTypes } from './reducers/type.actions';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +14,7 @@ import { StoreService, SLICES } from './store.service';
 export class AppComponent implements OnInit {
 
   constructor(
-    private store: StoreService,
-    private provider: ProviderService
+    private globalStore: Store<State>
   ) {}
 
   missions: any[];
@@ -25,38 +27,41 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loadValues();
-    this.provider.getMissions();
+    this.observeValues();
   }
 
   loadValues() {
-    this.store.select$(SLICES.missions).subscribe(missions => {
+    this.globalStore.dispatch(new LoadAgencys());
+    this.globalStore.dispatch(new LoadMissions());
+    this.globalStore.dispatch(new LoadStatuss());
+    this.globalStore.dispatch(new LoadTypes());
+  }
+
+  observeValues() {
+    this.globalStore.select('mission').subscribe(({ missions }) => {
       this.missions = [ ...missions ];
-      this.valuesHolder = this.missions;
     });
-    this.store.select$(SLICES.agencies).subscribe(agencies => {
+    this.globalStore.select('agency').subscribe(({ agencies }) => {
       this.agencies = [ ...agencies ];
-      this.valuesHolder = this.agencies;
     });
-    this.store.select$(SLICES.statuses).subscribe(statuses => {
+    this.globalStore.select('status').subscribe(({ statuses }) => {
       this.statuses = [ ...statuses ];
-      this.valuesHolder = this.statuses;
     });
-    this.store.select$(SLICES.types).subscribe(types => {
+    this.globalStore.select('type').subscribe(({ types }) => {
       this.types = [ ...types ];
-      this.valuesHolder = this.types;
     });
   }
 
   setCriteria(criteria) {
     switch (criteria) {
       case 'status':
-        this.provider.getStatuses();
+        this.valuesHolder = [ ...this.statuses ];
         break;
       case 'agency':
-        this.provider.getAgencies();
+        this.valuesHolder = [ ...this.agencies ];
         break;
       case 'type':
-        this.provider.getTypes();
+        this.valuesHolder = [ ...this.types ];
         break;
     }
     this.criteria = criteria;
