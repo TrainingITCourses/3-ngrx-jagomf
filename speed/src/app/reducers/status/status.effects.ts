@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { ProviderService } from '../provider.service';
+import { ProviderService } from '../../provider.service';
 import { StatusActionTypes, StatusesLoaded } from './status.actions';
 import { mergeMap, map } from 'rxjs/operators';
 

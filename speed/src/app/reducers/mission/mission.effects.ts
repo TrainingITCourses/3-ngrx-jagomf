@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { MissionActionTypes, MissionsLoaded } from './mission.actions';
-import { ProviderService } from '../provider.service';
+import { ProviderService } from '../../provider.service';
 import { mergeMap, map } from 'rxjs/operators';
 
 

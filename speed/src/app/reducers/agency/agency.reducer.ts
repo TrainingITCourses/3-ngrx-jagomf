@@ -1,4 +1,4 @@
-import { Agency } from '../models/agency';
+import { Agency } from '../../models/agency';
 import { AgencyActions, AgencyActionTypes } from './agency.actions';
 
 

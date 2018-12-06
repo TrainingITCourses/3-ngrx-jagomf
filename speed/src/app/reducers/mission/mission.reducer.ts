@@ -1,4 +1,4 @@
-import { Mission } from '../models/mission';
+import { Mission } from '../../models/mission';
 import { MissionActions, MissionActionTypes } from './mission.actions';
 
 

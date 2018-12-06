@@ -14,10 +14,10 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { AgencyEffects } from './reducers/agency.effects';
-import { MissionEffects } from './reducers/mission.effects';
-import { StatusEffects } from './reducers/status.effects';
-import { TypeEffects } from './reducers/type.effects';
+import { AgencyEffects } from './reducers/agency/agency.effects';
+import { MissionEffects } from './reducers/mission/mission.effects';
+import { StatusEffects } from './reducers/status/status.effects';
+import { TypeEffects } from './reducers/type/type.effects';
 
 @NgModule({
   declarations: [

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { AgencyActionTypes, AgenciesLoaded } from './agency.actions';
 import { mergeMap, map } from 'rxjs/operators';
-import { ProviderService } from '../provider.service';
+import { ProviderService } from '../../provider.service';
 
 
 @Injectable()

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from './reducers';
-import { LoadMissions } from './reducers/mission.actions';
-import { LoadAgencys } from './reducers/agency.actions';
-import { LoadStatuss } from './reducers/status.actions';
-import { LoadTypes } from './reducers/type.actions';
+import { LoadMissions } from './reducers/mission/mission.actions';
+import { LoadAgencys } from './reducers/agency/agency.actions';
+import { LoadStatuss } from './reducers/status/status.actions';
+import { LoadTypes } from './reducers/type/type.actions';
 
 @Component({
   selector: 'app-root',

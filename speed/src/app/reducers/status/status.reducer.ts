@@ -1,4 +1,4 @@
-import { Status } from '../models/status';
+import { Status } from '../../models/status';
 import { StatusActions, StatusActionTypes } from './status.actions';
 
 
